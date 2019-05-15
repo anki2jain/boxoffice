@@ -154,7 +154,7 @@ class _HviewState extends State<Hview> {
                 // itemCount: 0:popmov==null?20;
                 itemCount: popmov == 0
                     ? popmov["results"].length == null
-                    : popmov["results"].length,
+                    : popmov["results"].length-1,
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () => Navigator.push(

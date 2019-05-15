@@ -1,16 +1,13 @@
-# last_app
+#BOXOFFICE
+------------------------------------------------------------------------------------------
+This flutter based application which provides all the details of movies,TV shows and casts.
+-------------------------------------------------------------------------------------------
 
-A new Flutter project.
+# Key Features
 
-## Getting Started
+-Provides basic details of movie and TV shows like release date, status of release,launguage,runtime,rating etc.
 
-This project is a starting point for a Flutter application.
+-Provides the description of casts of movies.
 
-A few resources to get you started if this is your first Flutter project:
+-User can signin to this app and can place movies ,TV shows in favourites, watch_later
 
-- [Lab: Write your first Flutter app](https://flutter.io/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.io/docs/cookbook)
-
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
