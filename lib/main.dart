@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:intro_slider/intro_slider.dart';
 import 'package:last_app/card.dart';
+// import 'card.dart';
 import 'package:last_app/data.dart';
+import 'package:last_app/detail.dart';
 import 'package:last_app/grid.dart';
-import 'package:last_app/screen1.dart';
 void main() {
   runApp(new MyApp());
 }
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
       '/camera': (BuildContext context) => new Hview(),
       '/grid': (context) => MovieGrid(),
       'json':(context)=> JsonTest(),
+      '/details':(context)=> Detail(),
 
 
       // '/go':(BuildContext context) => UserOptions()

@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:last_app/detail.dart';
 
 class MovieGrid extends StatefulWidget {
   const MovieGrid({Key key, this.data}) : super(key: key);
@@ -62,40 +63,49 @@ class _MovieGridState extends State<MovieGrid> {
               ),
               shrinkWrap: true,
               itemBuilder: (context, index) {
-                return Card(
-                  elevation: 2,
-                  child: Column(
-                    children: <Widget>[
-                      Container(
-                        height: 138,
-                        child: Builder(builder: (BuildContext context) {
-                          try {
-                            return Image.network(
-                              'https://image.tmdb.org/t/p/w500/' +
-                                  imp["results"][index]["poster_path"],
-                              fit: BoxFit.fitHeight,
-                            );
-                          } catch (e) {
-                            return Image.network(
-                              'http://sfwallpaper.com/images/image-not-available-11.jpg',
-                              fit: BoxFit.fitHeight,
-                            ) ;
-                          }
-                        }),
-                      ),
-                      Row(
-                        children: <Widget>[
-                          Flexible(
-                              child: Text(imp["results"][index]["title"],
-                                  overflow: TextOverflow.clip)),
-                          // Spacer(),
-                          IconButton(
-                            icon: Icon(Icons.favorite_border),
-                            onPressed: () {},
-                          )
-                        ],
-                      )
-                    ],
+                return GestureDetector(
+                   onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Detail(
+                                  data: imp["results"][index ]["id"],
+                                ))),
+                                  child: Card(
+                    elevation: 2,
+                    child: Column(
+                      children: <Widget>[
+                        Container(
+                          height: 138,
+                          child: Builder(builder: (BuildContext context) {
+                            try {
+                              return Image.network(
+                                'https://image.tmdb.org/t/p/w500/' +
+                                    imp["results"][index]["poster_path"],
+                                fit: BoxFit.fitHeight,
+                              );
+                            } catch (e) {
+                              return Image.network(
+                                'http://sfwallpaper.com/images/image-not-available-11.jpg',
+                                fit: BoxFit.fitHeight,
+                              ) ;
+                            }
+                          }),
+                        ),
+                        
+                        Row(
+                          children: <Widget>[
+                            Flexible(
+                                child: Text(imp["results"][index]["title"],
+                                    overflow: TextOverflow.clip)),
+                            // Spacer(),
+                            IconButton(
+                              icon: Icon(Icons.favorite_border),
+                              onPressed: () {},
+                            )
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 );
               },
