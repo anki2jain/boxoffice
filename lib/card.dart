@@ -182,7 +182,7 @@ class _HviewState extends State<Hview> {
                                   return Image.network(
                                     'https://image.tmdb.org/t/p/w500/' +
                                         popmov["results"][index + 1]
-                                            ["poster_path"],
+                                            ["backdrop_path"],
                                     fit: BoxFit.fitHeight,
                                   );
                                 } catch (e) {

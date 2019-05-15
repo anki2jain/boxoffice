@@ -13,6 +13,7 @@ class Detail extends StatefulWidget {
 class _DetailState extends State<Detail> {
   var height = 100.0, cast, vid, x = 1;
   String a, id;
+var rate,runtime,h;
 
   String t =
       "De Dana Dan (English: Hit left and right) is a 2009 Indian Hindi comedy film directed by Priyadarshan";
@@ -22,9 +23,7 @@ class _DetailState extends State<Detail> {
         "http://api.themoviedb.org/3/movie/$id/casts?api_key=2931998c3a80d7806199320f76d65298"));
     this.setState(() {
       cast = json.decode(details.body);
-      print(cast["cast"].length);
-      //  print("ankit");
-    });
+      });
   }
 
   Future videodetail() async {
@@ -32,11 +31,12 @@ class _DetailState extends State<Detail> {
         "http://api.themoviedb.org/3/movie/$id?api_key=2931998c3a80d7806199320f76d65298&append_to_response=videos"));
     this.setState(() {
       vid = json.decode(video.body);
-      print(vid["videos"]["results"]);
-      print("hogya kaam");
-      print(vid["videos"]["results"].length);
-      // print(vid.length);
-      //  print("ankit");
+  rate=vid["vote_average"];
+ 
+  runtime=vid["runtime"];
+ h= runtime/60;
+
+ print(h);
     });
   }
 
@@ -106,44 +106,167 @@ class _DetailState extends State<Detail> {
                 ],
               ),
             ),
-            Padding(
-              padding: EdgeInsets.all(20),
+            Row(
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.only(left: 20.0),
+                ),
+                Icon(
+                  Icons.star,
+                  color: Colors.yellow,
+                ),
+                Text(
+                  '$rate/10',
+                  style: TextStyle(fontStyle: FontStyle.italic),
+                )
+              ],
             ),
-            AnimatedContainer(
+//             ConstrainedBox(
+
+//               constraints: BoxConstraints(
+// maxHeight: 250
+//               ),
+//               child: Container(
+//                 height: height,
+//                 child: ConstrainedBox(
+//                   constraints: BoxConstraints(
+//                     maxHeight: 250,
+//                     // minHeight: 100
+//                   ),
+//                                   child: Column(
+//                     children: <Widget>[
+//                       GestureDetector(
+//                           onTap: () {
+//                             setState(() {
+//                               if (x == 0) {
+//                                 t = a;
+//                                 x = 1;
+//                                 height = 100.0;
+//                               } else {
+//                                 a = t;
+//                                 height = 150;
+//                                 x = 0;
+//                               }
+//                             });
+//                           },
+//                           child: Text(
+//                             "View more..",
+//                           )),
+//                     ],
+//                   ),
+//                 ),
+//               ),
+//             ),
+            Container(
               margin: EdgeInsets.all(20.0),
-              height: height,
-              // color: Colors.cyan,
-              duration: Duration(milliseconds: 0),
+              child: Text(
+                vid["overview"],
+                overflow: TextOverflow.clip,
+                style: TextStyle(fontSize: 13.0, color: Colors.grey[600]),
+              ),
+              constraints: BoxConstraints(maxHeight: 300.0, minHeight: 50.0),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20.0),
+              child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      if (x == 0) {
+                        x = 1;
+                      } else {
+                        x = 0;
+                      }
+                    });
+                  },
+                  child: x == 1
+                      ? Text(
+                          "Read more..",
+                          style: TextStyle(color: Colors.grey),
+                        )
+                      : Text(
+                          "Read less..",
+                          style: TextStyle(color: Colors.grey),
+                        )),
+            ),
+            Padding(
+              padding: EdgeInsets.all(10.0),
+              child: x == 0
+                  ? Row(
+                      children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.only(left:10.0),
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text("Status"),
+                            Padding(
+                              padding: EdgeInsets.only(left: 20.0),
+                            ),
+                            Text("Release Date"),
+                            Padding(
+                              padding: EdgeInsets.only(left: 20.0),
+                            ),
+                            Text("Run Time"),
+                            Padding(
+                              padding: EdgeInsets.only(left: 20.0),
+                            ),
+                            Text("Language"),
+                            Padding(
+                              padding: EdgeInsets.only(left: 20.0),
+                            ),
+                          ],
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(10.0),
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            vid["status"]==null?Text("-"):
+                            Text(vid["status"]),
+                            Padding(
+                              padding: EdgeInsets.only(left: 20.0),
+                            ),
+                            vid["release_date"]==null?Text("-"):
+                            Text(vid["release_date"]),
+                            Padding(
+                              padding: EdgeInsets.only(left: 20.0),
+                            ),
+                            // Text(vid["runtime"]),
+                            runtime==null?Text("-"):
+                            Text("$runtime min"),
+                            Padding(
+                              padding: EdgeInsets.only(left: 20.0),
+                            ),
+                            vid["original_language"]==null?Text("-"):
+                            Text(vid["original_language"]),
+                            Padding(
+                              padding: EdgeInsets.only(left: 20.0),
+                            ),
+                           
+                          ],
+                        ),
+                      ],
+                    )
+                  : Text(""),
+            ),
+            Padding(
+              padding: EdgeInsets.all(1.0),
+            ),
+            Padding(
+              padding: EdgeInsets.all(20.0),
               child: Container(
-                height: 40.0,
-                child: Column(
-                  children: <Widget>[
-                    Flexible(
-                        child: Text(
-                      vid["overview"],
-                      overflow: TextOverflow.clip,
-                    )),
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          if (x == 0) {
-                            t = a;
-                            x = 1;
-                            height = 100.0;
-                          } else {
-                            a = t;
-                            height = 150;
-                            x = 0;
-                          }
-                        });
-                      },
-                        child: Text(
-                      "View more..",
-                    )),
-                  ],
+                child: Text(
+                  "Casts",
+                  style: TextStyle(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 25.0,
+                      color: Colors.black54),
                 ),
               ),
             ),
+
             Container(
                 height: 150,
                 child: ListView.builder(
@@ -170,12 +293,23 @@ class _DetailState extends State<Detail> {
                             padding: EdgeInsets.all(10.0),
                           ),
                           Text(cast["cast"][index]["name"]),
-                          // Text(cast["cast"][index]["name"])
                         ],
                       ),
                     );
                   },
                 )),
+            Padding(
+              padding: EdgeInsets.all(20.0),
+              child: Container(
+                child: Text(
+                  "Videos",
+                  style: TextStyle(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 25.0,
+                      color: Colors.black54),
+                ),
+              ),
+            ),
             Container(
               height: 250.0,
               child: ListView.builder(
