@@ -21,7 +21,7 @@ var rate,runtime,h;
 
   Future moviedetail() async {
     http.Response details = await http.get(Uri.encodeFull(
-        "http://api.themoviedb.org/3/movie/$id/casts?api_key=2931998c3a80d7806199320f76d65298"));
+        "http://api.themoviedb.org/3/movie/$id/casts?api_key=<<your-api-key>>"));
     this.setState(() {
       cast = json.decode(details.body);
       
@@ -30,7 +30,7 @@ var rate,runtime,h;
 
   Future videodetail() async {
     http.Response video = await http.get(Uri.encodeFull(
-        "http://api.themoviedb.org/3/movie/$id?api_key=2931998c3a80d7806199320f76d65298&append_to_response=videos"));
+        "http://api.themoviedb.org/3/movie/$id?api_key=<<your-api-key>>&append_to_response=videos"));
     this.setState(() {
       vid = json.decode(video.body);
   rate=vid["vote_average"];

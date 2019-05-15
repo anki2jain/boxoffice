@@ -20,7 +20,7 @@ class _MovieGridState extends State<MovieGrid> {
     print(data);
     http.Response response = await http.get(
         Uri.encodeFull(
-            "https://api.themoviedb.org/3/search/movie?api_key=2931998c3a80d7806199320f76d65298&query=$data"),
+            "https://api.themoviedb.org/3/search/movie?api_key=<<your_api_key>>&query=$data"),
         headers: {
           "key": "",
         });

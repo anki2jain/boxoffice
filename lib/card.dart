@@ -24,8 +24,7 @@ class _HviewState extends State<Hview> {
 
   Future popular() async {
     http.Response result = await http.get(Uri.encodeFull(
-        'https://api.themoviedb.org/3/discover/movie?api_key=2931998c3a80d7806199320f76d65298&region=IN&language=hi-IN&with_original_language=hi&page=1'));
-    //  https://api.themoviedb.org/3/discover/movie?api_key=2931998c3a80d7806199320f76d65298&region=IN&language=hi-IN&with_original_language=hi&page=1
+        'https://api.themoviedb.org/3/discover/movie?api_key=<<your-api-key>>&region=IN&language=hi-IN&with_original_language=hi&page=1'));
     this.setState(() {
       popmov = json.decode(result.body);
     });
@@ -33,8 +32,7 @@ class _HviewState extends State<Hview> {
 
   Future thisyear() async {
     http.Response result = await http.get(Uri.encodeFull(
-        'https://api.themoviedb.org/3/discover/movie?api_key=2931998c3a80d7806199320f76d65298&language=hi&region=in&sort_by=popularity.desc&page=1&primary_release_year=2019'));
-    //  https://api.themoviedb.org/3/discover/movie?api_key=2931998c3a80d7806199320f76d65298&region=IN&language=hi-IN&with_original_language=hi&page=1
+        'https://api.themoviedb.org/3/discover/movie?api_key=<<your-api-key>>&language=hi&region=in&sort_by=popularity.desc&page=1&primary_release_year=2019'));
     this.setState(() {
       thisyr = json.decode(result.body);
       print(thisyr[0]["id"]);
@@ -48,7 +46,6 @@ class _HviewState extends State<Hview> {
     this.thisyear();
   }
 
-// https://api.themoviedb.org/3/discover/movie?api_key=2931998c3a80d7806199320f76d65298&language=hi&region=in&sort_by=popularity.desc&page=1&primary_release_year=2019
   void _searchmovies(String text) {
     name = text;
     if (name.length > 1) {

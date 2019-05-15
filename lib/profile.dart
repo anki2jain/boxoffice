@@ -15,7 +15,7 @@ class _ProfileState extends State<Profile> {
   var actor, mov, id;
   Future person() async {
     http.Response data = await http.get(Uri.encodeFull(
-        'https://api.themoviedb.org/3/person/$id?api_key=2931998c3a80d7806199320f76d65298'));
+        'https://api.themoviedb.org/3/person/$id?api_key=<<your-api-key>>'));
     this.setState(() {
       actor = json.decode(data.body);
       // print(actor);
@@ -24,7 +24,7 @@ class _ProfileState extends State<Profile> {
 
   Future movies() async {
     http.Response details = await http.get(Uri.encodeFull(
-        "https://api.themoviedb.org/3/person/$id/movie_credits?api_key=2931998c3a80d7806199320f76d65298"));
+        "https://api.themoviedb.org/3/person/$id/movie_credits?api_key=<<your-api-key>>"));
     this.setState(() {
       mov = json.decode(details.body);
       print(mov["cast"][0]["title"]);
@@ -184,6 +184,3 @@ class _ProfileState extends State<Profile> {
     );
   }
 }
-
-// https://api.themoviedb.org/3/person/86302/movie_credits?api_key=2931998c3a80d7806199320f76d65298
-// https://api.themoviedb.org/3/person/86302?api_key=2931998c3a80d7806199320f76d65298
