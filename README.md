@@ -1,6 +1,6 @@
-#BOXOFFICE
+# BOXOFFICE
 ------------------------------------------------------------------------------------------
-This flutter based application which provides all the details of movies,TV shows and casts.
+This is a flutter based application which provides all the details of movies,TV shows and casts.
 -------------------------------------------------------------------------------------------
 
 # Key Features
