@@ -6,7 +6,7 @@ This is a flutter based application which provides all the details of movies,TV 
 # Key Features
 
 -Provides basic details of movie and TV shows like release date, status of release,launguage,runtime,rating etc.
-![alt text](https://github.com/anki2jain/boxoffice/blob/master/img2.jpeg)
+![alt text](https://github.com/anki2jain/boxoffice/blob/master/img2.jpeg=300*200)
 
 ![alt text](https://github.com/anki2jain/boxoffice/blob/master/img3.jpeg)
 
