@@ -5,6 +5,7 @@ import 'package:last_app/card.dart';
 import 'package:last_app/data.dart';
 import 'package:last_app/detail.dart';
 import 'package:last_app/grid.dart';
+import 'package:last_app/profile.dart';
 void main() {
   runApp(new MyApp());
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:last_app/profile.dart';
 import 'dart:convert';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -23,6 +24,7 @@ var rate,runtime,h;
         "http://api.themoviedb.org/3/movie/$id/casts?api_key=2931998c3a80d7806199320f76d65298"));
     this.setState(() {
       cast = json.decode(details.body);
+      
       });
   }
 
@@ -60,7 +62,7 @@ var rate,runtime,h;
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("qw"),
+        title: Text(vid["title"]),
       ),
       body: Container(
         child: ListView(
@@ -277,17 +279,26 @@ var rate,runtime,h;
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
                         children: <Widget>[
-                          CircleAvatar(
-                            radius: 40,
-                            backgroundColor: Colors.red,
-                            backgroundImage: cast["cast"][index]
-                                        ["profile_path"] ==
-                                    null
-                                ? NetworkImage(
-                                    "http://sfwallpaper.com/images/image-not-available-11.jpg")
-                                : NetworkImage(
-                                    "https://image.tmdb.org/t/p/w500/" +
-                                        cast["cast"][index]["profile_path"]),
+                          GestureDetector(
+                             onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Profile(
+                                  idea: cast["cast"][index]
+                                          ["id"],
+                                ))),
+                                                      child: CircleAvatar(
+                              radius: 40,
+                              backgroundColor: Colors.red,
+                              backgroundImage: cast["cast"][index]
+                                          ["profile_path"] ==
+                                      null
+                                  ? NetworkImage(
+                                      "http://sfwallpaper.com/images/image-not-available-11.jpg")
+                                  : NetworkImage(
+                                      "https://image.tmdb.org/t/p/w500/" +
+                                          cast["cast"][index]["profile_path"]),
+                            ),
                           ),
                           Padding(
                             padding: EdgeInsets.all(10.0),
