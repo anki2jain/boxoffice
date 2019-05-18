@@ -18,3 +18,5 @@ This is a flutter based application which provides all the details of movies,TV 
 -<h4>User can signin to this app and can place movies ,TV shows in favourites, watch_later</h4>
 
 <img src="https://github.com/anki2jain/boxoffice/blob/master/img1.jpeg " width="300" height="500">
+
+Get the app here: https://drive.google.com/open?id=18E8mY9QMC_WJG6aX5LCbLfoQ5_qUO2Ao
