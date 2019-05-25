@@ -1,29 +1,35 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:intro_slider/intro_slider.dart';
+import 'package:last_app/about.dart';
 import 'package:last_app/card.dart';
-// import 'card.dart';
 import 'package:last_app/data.dart';
 import 'package:last_app/detail.dart';
 import 'package:last_app/grid.dart';
-import 'package:last_app/profile.dart';
+
 void main() {
   runApp(new MyApp());
 }
 
 class MyApp extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext contSext) {
     return new MaterialApp(
-      home: new Hview(),
+      // home:UserOptions(),
+      home: new ImageSplashScreen(),
+
+      theme: ThemeData(
+        primaryColor: Colors.red,
+        // primarySwatch: Colors.white,
+      ),
       debugShowCheckedModeBanner: false,
-      routes: <String , WidgetBuilder>{
-      '/camera': (BuildContext context) => new Hview(),
-      '/grid': (context) => MovieGrid(),
-      'json':(context)=> JsonTest(),
-      '/details':(context)=> Detail(),
-
-
-      // '/go':(BuildContext context) => UserOptions()
+      routes: <String, WidgetBuilder>{
+        '/Hview': (BuildContext context) => new Hview(),
+        '/grid': (context) => MovieGrid(),
+        'json': (context) => JsonTest(),
+        '/details': (context) => Detail(),
+        'about':(context)=> About() 
+        // '/go':(BuildContext context) => UserOptions()
       },
     );
   }
@@ -44,7 +50,9 @@ class _ScreenState extends State<Screen> {
     slides.add(
       new Slide(
         title: "ERASER",
-        description: "Allow miles wound place the leave had. To sitting subject no improve studied limited",
+
+        description:
+            "Allow miles wound place the leave had. To sitting subject no improve studied limited",
         // pathImage: "https://placeimg.com/640/480/nature/2",
         backgroundColor: Color(0xfff5a623),
       ),
@@ -52,9 +60,10 @@ class _ScreenState extends State<Screen> {
     slides.add(
       new Slide(
         title: "PENCIL",
-        description: "Ye indulgence unreserved connection alteration appearance",
+        description:
+            "Ye indulgence unreserved connection alteration appearance",
         // pathImage: "https://placeimg.com/640/480/nature/3",
-        
+
         backgroundColor: Color(0xff203152),
       ),
     );
@@ -70,12 +79,12 @@ class _ScreenState extends State<Screen> {
   }
 
   void onDonePress() {
-    Navigator.pushReplacementNamed(context,'/camera');
-  //  Navigator.pushNamedAndRemoveUntil(context, '/camera');
+    Navigator.pushReplacementNamed(context, '/camera');
+    //  Navigator.pushNamedAndRemoveUntil(context, '/camera');
   }
 
   void onSkipPress() {
-    Navigator.pushReplacementNamed(context,'/camera');
+    Navigator.pushReplacementNamed(context, '/camera');
     // Navigator.pushNamed(context, '/go');
   }
 
@@ -88,104 +97,50 @@ class _ScreenState extends State<Screen> {
     );
   }
 }
-// class UserOptions extends StatefulWidget {
-//   @override
-//   State<StatefulWidget> createState() {
-//     return new UserOptionsState();
-//   }
-// }
 
-// class UserOptionsState extends State<UserOptions> {
-// //save the result of gallery file
-//   File galleryFile;
+class ImageSplashScreen extends StatefulWidget {
+  @override
+  SplashScreenState createState() => new SplashScreenState();
+}
 
-// //save the result of camera file
-//   File cameraFile;
+class SplashScreenState extends State<ImageSplashScreen> {
+  startTime() async {
+    var _duration = new Duration(seconds: 2);
+    return new Timer(_duration, navigationPage);
+  }
 
-//   @override
-//   Widget build(BuildContext context) {
-//     //display image selected from gallery
-//     imageSelectorGallery() async {
-//       galleryFile = await ImagePicker.pickImage(
-//         source: ImageSource.gallery,
-//         // maxHeight: 50.0,
-//         // maxWidth: 50.0,
-//       );
-//       print("You selected gallery image : " + galleryFile.path);
-//       setState(() {});
-//     }
+  void navigationPage() {
+    Navigator.pushReplacementNamed(context, '/Hview');
+  }
 
-//     //display image selected from camera
-//     imageSelectorCamera() async {
-//       cameraFile = await ImagePicker.pickImage(
-//         source: ImageSource.camera,
-//         //maxHeight: 50.0,
-//         //maxWidth: 50.0,
-//       );
-//       print("You selected camera image : " + cameraFile.path);
-//       setState(() {});
-//     }
+  @override
+  void initState() {
+    super.initState();
+    startTime();
+  }
 
-//     return new Scaffold(
-//       appBar: new AppBar(
-//         title: new Text('Image Picker'),
-//       ),
-//       body: new Builder(
-//         builder: (BuildContext context) {
-//           return new Column(
-//             mainAxisAlignment: MainAxisAlignment.spaceAround,
-//             children: <Widget>[
-//              FloatingActionButton(
-//                backgroundColor: Colors.red,
-//                onPressed: hello,
-//              ),
-//              RaisedButton(
-//                child: Text("Change route"),
-//                onPressed: goo,
-//              ),
-//               new RaisedButton(
-//                 child: new Text('Select Image from Gallery'),
-//                 onPressed: imageSelectorGallery,
-//               ),
-//               new RaisedButton(
-//                 child: new Text('Select Image from Camera'),
-//                 onPressed: imageSelectorCamera,
-//               ),
-//               displaySelectedFile(galleryFile),
-//               displaySelectedFile(cameraFile)
-//             ],
-//           );
-//         },
-//       ),
-//     );
-//   }
-//   void goo(){
-//     Navigator.pushNamed(context,'.');
-//   }
-// void hello() {
-
-// setState(() {
-
- 
-// Fluttertoast.showToast(
-// msg: "You have pushed the button time.",
-// textColor: Colors.white,
-// toastLength: Toast.LENGTH_SHORT,
-// timeInSecForIos: 1,
-// gravity: ToastGravity.BOTTOM,
-// backgroundColor: Colors.indigo,
-// );
-// });
-// }
-//   Widget displaySelectedFile(File file) {
-//     return new CircleAvatar(
-//       radius: 50,
-//       backgroundColor: Colors.red,
-// //child: new Card(child: new Text(''+galleryFile.toString())),
-// //child: new Image.file(galleryFile),
-//       child: file == null
-//           ? new Text('')
-//           :  new Image.file(file)
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      body: new Stack(
+        fit: StackFit.expand,
+        children: <Widget>[
+          Container(
+            decoration: BoxDecoration(
+                gradient: RadialGradient(
+              center: Alignment.center,
+              radius: 3.0,
+              colors: [Colors.red, Colors.orangeAccent],
+            )),
+            child: Center(
+                child: Text("BOXOFFICE",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 50.0,
+                        fontFamily: 'Poppins'))),
+          )
+        ],
+      ),
+    );
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "782577331768",
+    "firebase_url": "https://boxoffice-df367.firebaseio.com",
+    "project_id": "boxoffice-df367",
+    "storage_bucket": "boxoffice-df367.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:782577331768:android:bcf27d81a9aa4df7",
+        "android_client_info": {
+          "package_name": "com.example.lastapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "782577331768-e6f76si3o7ok3s9hkjh2du2p2smhubur.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjNDh725sZFEOP1Y6LnXG9X99qB98yHEk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "782577331768-e6f76si3o7ok3s9hkjh2du2p2smhubur.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

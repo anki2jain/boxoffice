@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:http/http.dart' as http;
 import 'package:last_app/detail.dart';
 
@@ -20,7 +21,8 @@ class _MovieGridState extends State<MovieGrid> {
     print(data);
     http.Response response = await http.get(
         Uri.encodeFull(
-            "https://api.themoviedb.org/3/search/movie?api_key=<<your_api_key>>&query=$data"),
+          "https://api.themoviedb.org/3/search/multi?api_key=2931998c3a80d7806199320f76d65298&query=$data&page=1&include_adult=false"),
+            // "https://api.themoviedb.org/3/search/movie?api_key=2931998c3a80d7806199320f76d65298&query=$data"),
         headers: {
           "key": "",
         });
@@ -50,7 +52,10 @@ class _MovieGridState extends State<MovieGrid> {
       ),
       body: isloading
           ? Center(
-              child: CircularProgressIndicator(),
+              child:SpinKitFadingCircle(
+                      color: Colors.blueAccent,
+                      size: 50.0,
+                    ),
             )
           : GridView.builder(
               itemCount: imp == 0
@@ -94,8 +99,10 @@ class _MovieGridState extends State<MovieGrid> {
                         
                         Row(
                           children: <Widget>[
-                            Flexible(
-                                child: Text(imp["results"][index]["title"],
+                            imp["results"][index]["title"]!=null?Flexible(
+                                child:Text(imp["results"][index]["title"],
+                                    overflow: TextOverflow.clip)):Flexible(
+                                child:Text(imp["results"][index]["name"],
                                     overflow: TextOverflow.clip)),
                             // Spacer(),
                             IconButton(
