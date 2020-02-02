@@ -1,6 +1,11 @@
-# BOXOFFICE
+
+<h1 align="center"> BOXOFFICE</h1>
+
+<img src="https://img.shields.io/badge/developed%20by-ankit--jain-blue">
+<img src="https://img.shields.io/github/issues/anki2jain/boxoffice">
+
 ------------------------------------------------------------------------------------------
-This is a flutter based application which provides all the details of movies,TV shows and casts.
+###This is a flutter based application which provides all the details of movies,TV shows and casts.
 -------------------------------------------------------------------------------------------
 
 # Key Features
@@ -19,4 +24,9 @@ This is a flutter based application which provides all the details of movies,TV 
 
 <img src="https://github.com/anki2jain/boxoffice/blob/master/img1.jpeg " width="300" height="500">
 
+### **TechStack Used**
+
+1. Flutter
+2. Dart
+   
 Get the app here: https://drive.google.com/open?id=18E8mY9QMC_WJG6aX5LCbLfoQ5_qUO2Ao
