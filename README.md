@@ -5,8 +5,8 @@
 <img src="https://img.shields.io/github/issues/anki2jain/boxoffice">
 
 ------------------------------------------------------------------------------------------
-###This is a flutter based application which provides all the details of movies,TV shows and casts.
--------------------------------------------------------------------------------------------
+<h4> This is a flutter based application which provides all the details of movies,TV shows and casts.</h4>
+
 
 # Key Features
 
